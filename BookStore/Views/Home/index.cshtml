@@ -1,0 +1,57 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>index</title>
+    <link href="~/lib/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/cite.css" rel="stylesheet" />
+</head>
+<body>
+    <h1>This is index page</h1>
+    <img src="~/images/cow.jpg" alt="cow" class="ma" />
+    <img src="~/Mystaticfiles/ongole-cattle.JPG" class="ma" alt="cowcattle" />
+    @{
+        int a = 10;
+    }
+
+    @if (a < 11)
+    {
+        a++;
+
+        <h1>Hello i am from if block and value = @a</h1>
+    }
+    else
+    {
+        <h1>Hello i am from else block</h1>
+    }
+
+    @for (int i = 0; i <= 5; i++)
+    {
+        <h1>Number are i = @i</h1>
+    }
+
+    @{
+        var list = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8 };
+    }
+
+    @foreach (var item in list)
+    {
+        <h1>@item</h1>
+    }
+
+    <input type="button" value="Button" class="btn btn-danger" />
+</body>
+<script src="~/lib/jquery/jquery.min.js"></script>
+</html>
+
+<script>
+    $(document).ready(function () {
+        alert("Page loaded");
+    });
+</script>

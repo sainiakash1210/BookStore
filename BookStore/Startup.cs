@@ -2,9 +2,11 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -29,19 +31,24 @@ namespace BookStore
 
             // we use number of Http application Pipeline called middleware component in an application 
 
-           /* app.Use(async(context, next) =>
-            {
-                await context.Response.WriteAsync("Hello from my first Middleware");
-                await next();
-                await context.Response.WriteAsync("Hello my fist middleware response");
-            });
+            /* app.Use(async(context, next) =>
+             {
+                 await context.Response.WriteAsync("Hello from my first Middleware");
+                 await next();
+                 await context.Response.WriteAsync("Hello my fist middleware response");
+             });
 
-            app.Use(async(context, next) =>
+             app.Use(async(context, next) =>
+             {
+               await context.Response.WriteAsync("This is my Second middleware");
+             });*/
+
+            app.UseStaticFiles();
+           /* app.UseStaticFiles(new StaticFileOptions() // it is used to access static file resite in another folder than wwwroot folder
             {
-              await context.Response.WriteAsync("This is my Second middleware");
+                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "Mystaticfiles")),
+                RequestPath = "/Mystaticfiles"
             });*/
-
-           
             app.UseRouting(); // we must declare UseRouting method before use of ENdpopint.
 
             app.UseEndpoints(endpoints =>
